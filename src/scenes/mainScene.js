@@ -21,7 +21,7 @@ import html2canvas from 'html2canvas';
 const scene = new THREE.Scene();
 initFog(scene);
 
-const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 5, 1200);
 camera.position.set(30, 75, 350);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -89,7 +89,7 @@ for (let i = 0; i < 10; i++) {
     scene.add(cloud);
 }
 
-loadRoad(scene);
+
 
 const isLocalhost = window.location.hostname === "localhost" || 
                     window.location.hostname === "127.0.0.1" ||
@@ -327,11 +327,12 @@ Promise.all([
         </div>
     `
     ),
+    loadRoad(scene),
     // loadModel(scene,'Mustang', '/assets/shelby/scene.gltf', 450, 0, 60, 12,traffic_level),
     // loadModel(scene,'Focus', '/assets/focus/scene.gltf', 500, 0, 30, 12,traffic_level),
     // loadModel(scene,'Boxster', '/assets/boxster/scene.gltf', 1.35, 3.9, 45, 12,traffic_level),
     // loadModel(scene,'Porsche', '/assets/porsche/scene.gltf', 5, 0.55, 30, 8,traffic_level),
-    loadModel(scene, 'Mustang', '/assets/shelby/scene_draco.gltf', 500, 0, 60, 12, traffic_level),
+    loadModel(scene, 'Mustang', '/assets/focus/scene_draco.gltf', 500, 0, 60, 12, traffic_level),
     loadModel(scene, 'Focus', '/assets/focus/scene_draco.gltf', 500, 0, 30, 12, traffic_level),
     loadModel(scene, 'Boxster', '/assets/boxster/scene_draco.gltf', 1.35, 3.9, 45, 12, traffic_level),
     loadModel(scene, 'Porsche', '/assets/porsche/scene_draco.gltf', 5, 0.55, 30, 8, traffic_level)
@@ -487,7 +488,7 @@ Promise.all([
                 
                 if (car.position.z < -limit || car.position.x > limit || car.position.x < -limit) {
                     // let randomInt=THREE.MathUtils.randInt(0,2)
-                    car.position.z=limit+50+count*30;
+                    car.position.z=((limit+50)%30+count)*30;
                     car.position.x=30+count*15
                     car.rotation.y=Math.PI;
                     count++;
@@ -601,7 +602,7 @@ Promise.all([
                 
                 if (car.position.z > limit|| car.position.x > limit || car.position.x < -limit) {
                     // let randomInt=THREE.MathUtils.randInt(0,2)
-                    car.position.z=-limit-50-count*30;
+                    car.position.z=-((limit+50)%30+count)*30;
                     car.position.x=-(30+count *15)
                     car.rotation.y=0;
                     // scene.remove(car);
@@ -715,7 +716,7 @@ Promise.all([
                 
                 if (car.position.x > limit || car.position.z > limit || car.position.z < -limit) {
                     // let randomInt=THREE.MathUtils.randInt(0,2)
-                    car.position.x=-limit-50-count*30;
+                    car.position.x=-((limit+50)%30+count)*30;
                     car.position.z=30+count *15
                     car.rotation.y=Math.PI/2;
                     // scene.remove(car);
@@ -829,7 +830,7 @@ Promise.all([
                 
                 if (car.position.x < -limit || car.position.z > limit || car.position.z < -limit) {
                     // let randomInt=THREE.MathUtils.randInt(0,2)
-                    car.position.x=limit+50+count*30;
+                    car.position.x=((limit+50)%30+count)*30;
                     car.position.z=-(30+count*15)
                     car.rotation.y=-Math.PI/2;
                     // scene.remove(car);
