@@ -89,10 +89,29 @@ for (let i = 0; i < 10; i++) {
     scene.add(cloud);
 }
 
+loadRoad(scene);
 
-let traffic_level = 'high';
+const isLocalhost = window.location.hostname === "localhost" || 
+                    window.location.hostname === "127.0.0.1" ||
+                    window.location.hostname.includes("192.168.");
 
 const loadGoogleMapsScript = () => {
+    if (!isLocalhost) {
+        console.log("Not running on localhost - skipping Google Maps integration");
+        updateTrafficDisplayPlaceholder("Using default high traffic density for deployed environment");
+        loadCars("high");
+        return;
+    }
+
+    // Insert a container in the HTML to display traffic density information
+    document.body.insertAdjacentHTML(
+        "beforeend",
+        `
+        <div id="traffic-info" style="position: absolute; top: 20px; right: 30px; background: white; padding: 10px; border-radius: 5px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); font-size: 14px;">
+            <p>Initializing traffic density analysis...</p>
+        </div>
+    `
+    );
     const script = document.createElement('script');
     script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly`;
     script.async = true;
@@ -291,15 +310,9 @@ function updateTrafficDisplayPlaceholder(message) {
     }
 }
 
-// Insert a container in the HTML to display traffic density information
-document.body.insertAdjacentHTML(
-    "beforeend",
-    `
-    <div id="traffic-info" style="position: absolute; top: 20px; right: 30px; background: white; padding: 10px; border-radius: 5px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); font-size: 14px;">
-        <p>Initializing traffic density analysis...</p>
-    </div>
-`
-);
+
+
+
 
 
 
@@ -309,7 +322,7 @@ Promise.all([
     // loadModel(scene,'Focus', '/assets/focus/scene.gltf', 500, 0, 30, 12,traffic_level),
     // loadModel(scene,'Boxster', '/assets/boxster/scene.gltf', 1.35, 3.9, 45, 12,traffic_level),
     // loadModel(scene,'Porsche', '/assets/porsche/scene.gltf', 5, 0.55, 30, 8,traffic_level),
-    loadModel(scene, 'Mustang', '/assets/shelby/scene_draco.gltf', 450, 0, 60, 12, traffic_level),
+    loadModel(scene, 'Mustang', '/assets/shelby/scene_draco.gltf', 500, 0, 60, 12, traffic_level),
     loadModel(scene, 'Focus', '/assets/focus/scene_draco.gltf', 500, 0, 30, 12, traffic_level),
     loadModel(scene, 'Boxster', '/assets/boxster/scene_draco.gltf', 1.35, 3.9, 45, 12, traffic_level),
     loadModel(scene, 'Porsche', '/assets/porsche/scene_draco.gltf', 5, 0.55, 30, 8, traffic_level)
@@ -808,7 +821,7 @@ Promise.all([
 });
 }
 
-loadRoad(scene);
+
 
 let occ2 = [  [0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0], 
@@ -1148,6 +1161,13 @@ document.addEventListener('keydown', switchPattern);
 
 startTrafficSignals();
 
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+}
+window.addEventListener('resize', onWindowResize, false);
+onWindowResize();
 
 function animateCloud() {
     clouds.forEach(cloud => {
