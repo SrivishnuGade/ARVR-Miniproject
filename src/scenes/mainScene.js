@@ -348,7 +348,7 @@ Promise.all([
     // }
     // if(traffic_level==='high'){scene.remove(cars['Focus'][11]);}
 
-
+    let count=0;
     setInterval(() => {
         // Define the cars you want to include in the loop
         let carModels = [];
@@ -388,7 +388,6 @@ Promise.all([
                 [cars['Mustang'][9]],
             ];
         }
-        let count=0;
         // Loop over each car array and each car within those arrays
         carModels.forEach(carArray => {
             carArray.forEach(car => {
@@ -410,7 +409,7 @@ Promise.all([
                     if(position===1)
                     {
                         moveCarRight(car);
-                        console.log('right');
+                        // console.log('right');
                         occ_pos = occ_pos.filter(pos => pos[0] !== lane || pos[1] !== position);
                     }
                     else if ((position !== 1) && !occ_pos.some(pos => pos[0] === lane && pos[1] === position - 1)) {
@@ -488,7 +487,7 @@ Promise.all([
                 
                 if (car.position.z < -limit || car.position.x > limit || car.position.x < -limit) {
                     // let randomInt=THREE.MathUtils.randInt(0,2)
-                    car.position.z=((limit+50)%30+count)*30;
+                    car.position.z=((limit+50)%30)*30;
                     car.position.x=30+count*15
                     car.rotation.y=Math.PI;
                     count++;
@@ -536,7 +535,6 @@ Promise.all([
                 [cars['Mustang'][8]],
             ];
         }
-        let count=0;
         carModels.forEach(carArray => {
             carArray.forEach(car => {
                 let lane=5;
@@ -551,11 +549,11 @@ Promise.all([
                 }
                 if (position >= 0) {
                     // Insert debugging logs
-                    console.log(`Processing car at lane: ${lane}, position: ${position}`);
+                    // console.log(`Processing car at lane: ${lane}, position: ${position}`);
     
                     if (!occ_pos1.some(pos => pos[0] === lane && pos[1] === position)) {
                         occ_pos1.push([lane, position]);
-                        console.log(`Added to occ_pos1: lane ${lane}, position ${position}`);
+                        // console.log(`Added to occ_pos1: lane ${lane}, position ${position}`);
                     }
     
                     if (position === 0 && light === 'green') {
@@ -598,7 +596,7 @@ Promise.all([
                     }
                 }
     
-                console.log(`Final occ_pos1:`, occ_pos1);
+                // console.log(`Final occ_pos1:`, occ_pos1);
                 
                 if (car.position.z > limit|| car.position.x > limit || car.position.x < -limit) {
                     // let randomInt=THREE.MathUtils.randInt(0,2)
@@ -650,7 +648,6 @@ Promise.all([
                 [cars['Mustang'][10]],
             ];
         }
-        let count=0;
         carModels.forEach(carArray => {
             carArray.forEach(car => {
                 let lane=5;
@@ -665,11 +662,11 @@ Promise.all([
                 }
                 if (position >= 0) {
                     // Insert debugging logs
-                    console.log(`Processing car at lane: ${lane}, position: ${position}`);
+                    // console.log(`Processing car at lane: ${lane}, position: ${position}`);
     
                     if (!occ_pos2.some(pos => pos[0] === lane && pos[1] === position)) {
                         occ_pos2.push([lane, position]);
-                        console.log(`Added to occ_pos2: lane ${lane}, position ${position}`);
+                        // console.log(`Added to occ_pos2: lane ${lane}, position ${position}`);
                     }
     
                     if (position === 0 && light === 'green') {
@@ -712,7 +709,7 @@ Promise.all([
                     }
                 }
     
-                console.log(`Final occ_pos2:`, occ_pos2);
+                // console.log(`Final occ_pos2:`, occ_pos2); 
                 
                 if (car.position.x > limit || car.position.z > limit || car.position.z < -limit) {
                     // let randomInt=THREE.MathUtils.randInt(0,2)
@@ -764,7 +761,6 @@ Promise.all([
                 [cars['Mustang'][11]],
             ];
         }
-        let count=0;
         carModels.forEach(carArray => {
             carArray.forEach(car => {
                 let lane=5;
@@ -779,11 +775,11 @@ Promise.all([
                 }
                 if (position >= 0) {
                     // Insert debugging logs
-                    console.log(`Processing car at lane: ${lane}, position: ${position}`);
+                    // console.log(`Processing car at lane: ${lane}, position: ${position}`);
     
                     if (!occ_pos3.some(pos => pos[0] === lane && pos[1] === position)) {
                         occ_pos3.push([lane, position]);
-                        console.log(`Added to occ_pos3: lane ${lane}, position ${position}`);
+                        // console.log(`Added to occ_pos3: lane ${lane}, position ${position}`);
                     }
     
                     if (position === 0 && light === 'green') {
@@ -826,7 +822,7 @@ Promise.all([
                     }
                 }
     
-                console.log(`Final occ_pos3:`, occ_pos3);
+                // console.log(`Final occ_pos3:`, occ_pos3);
                 
                 if (car.position.x < -limit || car.position.z > limit || car.position.z < -limit) {
                     // let randomInt=THREE.MathUtils.randInt(0,2)

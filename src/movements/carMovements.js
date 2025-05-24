@@ -23,7 +23,7 @@ export function moveCarRight(carModel) {
                             y: yPosition,
                             z: 60,
                             onComplete: () => {
-                                console.log('Car reached destination');
+                                // console.log('Car reached destination');
                             }
                         });
                     });
@@ -48,7 +48,7 @@ export function moveCarRight1(carModel) {
                             y: yPosition,
                             z: -60,
                             onComplete: () => {
-                                console.log('Car reached destination');
+                                // console.log('Car reached destination');
                             }
                         });
                     });
@@ -73,7 +73,7 @@ export function moveCarRight2(carModel) {
                             y: yPosition,
                             z: limit,
                             onComplete: () => {
-                                console.log('Car reached destination');
+                                // console.log('Car reached destination');
                             }
                         });
                     });
@@ -98,7 +98,7 @@ export function moveCarRight3(carModel) {
                             y: yPosition,
                             z: -limit,
                             onComplete: () => {
-                                console.log('Car reached destination');
+                                // console.log('Car reached destination');
                             }
                         });
                     });
@@ -289,7 +289,7 @@ export function moveCarLeft1(carModel) {
                             y: yPosition,
                             z: -30,
                             onComplete: () => {
-                                console.log('Car reached destination');
+                                // console.log('Car reached destination');
                             }
                         });
                     });
@@ -314,7 +314,7 @@ export function moveCarLeft11(carModel) {
                                 y: yPosition,
                                 z: 30,
                                 onComplete: () => {
-                                    console.log('Car reached destination');
+                                    // console.log('Car reached destination');
                                 }
                             });
                         });
@@ -339,7 +339,7 @@ export function moveCarLeft12(carModel) {
                                     y: yPosition,
                                     z: -limit,
                                     onComplete: () => {
-                                        console.log('Car reached destination');
+                                        // console.log('Car reached destination');
                                     }
                                 });
                             });
@@ -364,7 +364,7 @@ export function moveCarLeft13(carModel) {
                                         y: yPosition,
                                         z: limit,
                                         onComplete: () => {
-                                            console.log('Car reached destination');
+                                            // console.log('Car reached destination');
                                         }
                                     });
                                 });
@@ -477,7 +477,7 @@ export function moveCarLeft2(carModel) {
                             y: yPosition,
                             z: -45,
                             onComplete: () => {
-                                console.log('Car reached destination');
+                                // console.log('Car reached destination');
                             }
                         });
                     });
@@ -502,7 +502,7 @@ export function moveCarLeft21(carModel) {
                             y: yPosition,
                             z: 45,
                             onComplete: () => {
-                                console.log('Car reached destination');
+                                // console.log('Car reached destination');
                             }
                         });
                     });
@@ -523,7 +523,7 @@ export function moveCarLeft22(carModel) {
                             y: yPosition,
                             z: -limit,
                             onComplete: () => {
-                                console.log('Car reached destination');
+                                // console.log('Car reached destination');
                             }
                         });
                     });
@@ -544,7 +544,7 @@ export function moveCarLeft23(carModel) {
                             y: yPosition,
                             z: limit,
                             onComplete: () => {
-                                console.log('Car reached destination');
+                                // console.log('Car reached destination');
                             }
                         });
                     });
@@ -565,7 +565,7 @@ export function moveCarStraight(carModel) {
         z: -limit,
         ease:"none",
         onComplete: () => {
-            console.log('Car reached destination');
+            // console.log('Car reached destination');
         }
     });
 }
@@ -579,7 +579,7 @@ export function moveCarStraight1(carModel) {
         z: limit,
         ease:"none",
         onComplete: () => {
-            console.log('Car reached destination');
+            // console.log('Car reached destination');
         }
     });
 }
@@ -593,7 +593,7 @@ export function moveCarStraight2(carModel) {
         z: carModel.position.z,
         ease:"none",
         onComplete: () => {
-            console.log('Car reached destination');
+            // console.log('Car reached destination');
         }
     });
 }
@@ -607,7 +607,7 @@ export function moveCarStraight3(carModel) {
         z: carModel.position.z,
         ease:"none",
         onComplete: () => {
-            console.log('Car reached destination');
+            // console.log('Car reached destination');
         }
     });
 }
