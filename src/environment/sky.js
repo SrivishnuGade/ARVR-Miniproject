@@ -39,7 +39,7 @@ export function initSky(scene) {
         side: THREE.BackSide
     });
 
-    const skyGeometry = new THREE.SphereGeometry(1000, 32, 15);
+    const skyGeometry = new THREE.SphereGeometry(600, 32, 15);
     const sky = new THREE.Mesh(skyGeometry, skyMaterial);
     scene.add(sky);
 }
